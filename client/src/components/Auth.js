@@ -26,7 +26,8 @@ export const Auth = () => {
   };
 
   const googleFailure = (error) => {
-    console.log(`Google sign in was unsuccessfull. Try Again Later. ERROR: ${error}`);
+    console.log(`Google sign in was unsuccessfull. Try Again Later.`);
+    console.log(error);
   };
 
   return (

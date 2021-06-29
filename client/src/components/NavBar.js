@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import history from '../history';
 
 export const NavBar = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
   const logout = () => {
@@ -18,9 +19,9 @@ export const NavBar = () => {
 
   useEffect(() => {
     const token = user?.token;
-     /* also check JWT here */ 
+    /* also check JWT here */
     setUser(JSON.parse(localStorage.getItem('profile')));
-  }, []); 
+  }, [location]); 
 
   return (
     <div>
