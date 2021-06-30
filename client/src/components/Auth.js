@@ -2,13 +2,31 @@ import React, { useState } from 'react'
 import {GoogleLogin} from 'react-google-login';
 import { useDispatch } from 'react-redux';
 import history from '../history';
+import {signin, signup} from '../actions/authActions';
+
+const initialState = {firstName: '', lastName: '', email: '', password: '', confirmPassword: '',}
 
 export const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
+  const [formData, setFormData] = useState(initialState)
   /* const [showPassword, setShowPassword] = useState(false); */
   const dispatch = useDispatch();
-  const handleSubmit = () => {};
-  const handleChange = () => {};
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+
+    if(isSignUp) {
+      dispatch(signup(formData, history))
+    } else {
+      dispatch(signin(formData, history))
+    }
+  };
+
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value});
+  };
+
   const switchMode = () => {
     setIsSignUp((prevIsSignUp) => !prevIsSignUp);
     /* reset show password here */
@@ -57,8 +75,8 @@ export const Auth = () => {
         {isSignUp && (
           <>
             <label>
-              Comfirm Password
-              <input name='comfirmPassword' onChange={handleChange} type='password' autoFocus required/>
+              Confirm Password
+              <input name='confirmPassword' onChange={handleChange} type='password' autoFocus required/>
             </label>
           </>
         )}

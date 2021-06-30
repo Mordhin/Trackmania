@@ -8,7 +8,8 @@ export const Sessions = () => {
   const sessions = useSelector((state) => state.sessions);
   const dispatch = useDispatch();
 
-  console.log("sessions:" + sessions);
+  console.log("sessions:");
+  console.log(sessions);
 
   useEffect(
     () => {

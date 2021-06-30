@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import path from "path";
 
 import sessionRoutes from "./routes/sessions.js";
+import userRoutes from "./routes/users.js";
 
 const app = express();
 dotenv.config();
@@ -15,6 +16,7 @@ app.use(cors());
 app.use(express.static('client/build'));
 
 app.use("/sessions", sessionRoutes);
+app.use("/user", userRoutes)
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, './client/build/index.html'))
 });

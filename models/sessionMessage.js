@@ -26,6 +26,8 @@ const sessionSchema = mongoose.Schema({
       ],
     },
   },
+  name: String,
+  creator: String,
   createdAt: {
     type: Date,
     default: new Date(),
