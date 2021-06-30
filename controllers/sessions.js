@@ -11,7 +11,7 @@ export const getSessions = async (req, res) => {
 
 export const createSessions = async (req, res) => {
   const session = req.body;
-  const newSession = new SessionMessage(session);
+  const newSession = new SessionMessage({...session, creator: req.userId, createdAt: new Date().toISOString()});
   try {
     await newSession.save();
     res.status(201).json(newSession);
