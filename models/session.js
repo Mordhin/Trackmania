@@ -34,6 +34,6 @@ const sessionSchema = mongoose.Schema({
   },
 });
 
-const SessionMessage = mongoose.model("SessionMessage", sessionSchema);
+const Session = mongoose.model("Session", sessionSchema);
 
-export default SessionMessage;
+export default Session;
