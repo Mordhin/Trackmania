@@ -22,9 +22,10 @@ export const Sessions = () => {
 
   return (
     <>
-      <h1>Sessions</h1>
-      <Session></Session>
-      <Session></Session>
+      <h2>Sessions:</h2>
+      {sessions.map((session) => {
+        return <Session data={session}></Session>;
+      })}
     </>
   );
 };
