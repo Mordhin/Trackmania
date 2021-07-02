@@ -23,3 +23,13 @@ export const createSession = (session) => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+export const deleteSession = (session) => async (dispatch) => {
+  try {
+    await api.deleteSession(session._id);
+
+    dispatch({ type: "DELETE_SESSION", payload: session._id });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
