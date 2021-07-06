@@ -20,9 +20,8 @@ export const Session = ({ data }) => {
       <p>{data.duration} heures</p>
       <div>{data.creator}</div>
       <button onClick={handleEdit}>Edit</button>
-      {currentUser?.result._id === data.creator && (
-        <button onClick={handleDelete}>Delete</button>
-      )}
+      {(currentUser?.result._id || currentUser?.result.googleId) ===
+        data.creator && <button onClick={handleDelete}>Delete</button>}
     </div>
   );
 };
