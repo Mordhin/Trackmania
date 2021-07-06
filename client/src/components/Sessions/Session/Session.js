@@ -18,6 +18,16 @@ export const Session = ({ data }) => {
     <div>
       <h3>{data.date}</h3>
       <p>{data.duration} heures</p>
+      <div>
+        <h4>Cardios</h4>
+        <ul>
+          {data.cardios?.map((cardio) => (
+            <li>
+              {cardio.activity} - {cardio.distance}km en {cardio.duration}h
+            </li>
+          ))}
+        </ul>
+      </div>
       <div>{data.creator}</div>
       <button onClick={handleEdit}>Edit</button>
       {(currentUser?.result._id || currentUser?.result.googleId) ===
