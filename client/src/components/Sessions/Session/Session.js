@@ -5,6 +5,8 @@ import { deleteSession } from "../../../actions/sessionActions";
 export const Session = ({ data }) => {
   const dispatch = useDispatch();
 
+  const currentUser = JSON.parse(localStorage.getItem("profile"));
+
   const handleEdit = () => {};
 
   const handleDelete = (e) => {
@@ -18,7 +20,9 @@ export const Session = ({ data }) => {
       <p>{data.duration} heures</p>
       <div>{data.creator}</div>
       <button onClick={handleEdit}>Edit</button>
-      <button onClick={handleDelete}>Delete</button>
+      {currentUser?.result._id === data.creator && (
+        <button onClick={handleDelete}>Delete</button>
+      )}
     </div>
   );
 };

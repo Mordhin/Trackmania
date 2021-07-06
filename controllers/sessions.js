@@ -39,7 +39,7 @@ export const createSessions = async (req, res) => {
  */
 
 export const deleteSession = async (req, res) => {
-  console.log(req.params.id);
+  console.log(req);
   const { id } = req.params;
   if (!Mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send("No session with that id");
