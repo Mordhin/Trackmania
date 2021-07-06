@@ -1,17 +1,25 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createSession } from "../../actions/sessionActions";
+import { CardioForm } from "./CardioForm";
 
 export const Form = () => {
   const [sessionData, setSessionData] = useState({
     date: "",
     duration: "",
+    acitivities: {
+      cardio: [],
+    },
   });
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createSession(sessionData));
+  };
+
+  const handleCardioSubmit = () => {
+    setSessionData({ ...sessionData.cardio });
   };
 
   return (
@@ -25,6 +33,7 @@ export const Form = () => {
             onChange={(e) =>
               setSessionData({ ...sessionData, date: e.target.value })
             }
+            required
           />
         </label>
         <label>
@@ -36,6 +45,7 @@ export const Form = () => {
             }
           />
         </label>
+        <CardioForm handleCardioSubmit={handleCardioSubmit} />
         <button type="submit">submit</button>
       </form>
     </>
