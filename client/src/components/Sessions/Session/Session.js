@@ -28,6 +28,22 @@ export const Session = ({ data }) => {
           ))}
         </ul>
       </div>
+      <div>
+        <h4>Strengths</h4>
+        <ul>
+          {data.strengths?.map((strengths) => (
+            <li>
+              {strengths.activity} - {strengths.duration}h
+              {strengths.series?.map((serie, index) => (
+                <div>
+                  Serie #{index + 1} - {serie.repetition} reps with{" "}
+                  {serie.weight}kg
+                </div>
+              ))}
+            </li>
+          ))}
+        </ul>
+      </div>
       <div>{data.creator}</div>
       <button onClick={handleEdit}>Edit</button>
       {(currentUser?.result._id || currentUser?.result.googleId) ===

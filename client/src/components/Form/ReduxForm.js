@@ -61,6 +61,77 @@ const ReduxForm = (props) => {
     </ul>
   );
 
+  const renderStrengths = ({ fields, meta }) => (
+    <ul>
+      <li>
+        <button type="button" onClick={() => fields.push({})}>
+          Add Strengths activity
+        </button>
+        {meta.submitFailed && meta.error && <span>{meta.error}</span>}
+      </li>
+      {fields.map((strength, index) => (
+        <li key={index}>
+          <button
+            type="button"
+            title="Remove Strength"
+            onClick={() => fields.remove(index)}
+          >
+            Remove Strength
+          </button>
+          <h4>Strength #{index + 1}</h4>
+          <Field
+            name={`${strength}.activity`}
+            type="text"
+            component={renderField}
+            label="Activity"
+          />
+          <Field
+            name={`${strength}.duration`}
+            type="number"
+            component={renderField}
+            label="Duration"
+          />
+          <FieldArray name={`${strength}.series`} component={renderSeries} />
+        </li>
+      ))}
+    </ul>
+  );
+
+  const renderSeries = ({ fields, meta }) => (
+    <ul>
+      <li>
+        <button type="button" onClick={() => fields.push({})}>
+          Add Series
+        </button>
+        {meta.submitFailed && meta.error && <span>{meta.error}</span>}
+      </li>
+      {fields.map((serie, index) => (
+        <li key={index}>
+          <button
+            type="button"
+            title="Remove Serie"
+            onClick={() => fields.remove(index)}
+          >
+            Remove Serie
+          </button>
+          <h4>Serie #{index + 1}</h4>
+          <Field
+            name={`${serie}.weight`}
+            type="number"
+            component={renderField}
+            label="Weight"
+          />
+          <Field
+            name={`${serie}.repetition`}
+            type="number"
+            component={renderField}
+            label="Repetition"
+          />
+        </li>
+      ))}
+    </ul>
+  );
+
   return (
     <form onSubmit={props.handleSubmit(onSubmit)}>
       <Field name="date" component={renderField} label="Date" type="text" />
@@ -71,11 +142,13 @@ const ReduxForm = (props) => {
         type="number"
       />
       <FieldArray name="cardios" component={renderCardios} />
+      <FieldArray name="strengths" component={renderStrengths} />
       <button type="submit">Submit</button>
     </form>
   );
 };
 
+// to be put into a new validate.js file
 const validate = (formValues) => {
   const errors = {};
   if (!formValues.date) {
