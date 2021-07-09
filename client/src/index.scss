@@ -1,0 +1,21 @@
+@import "./components/Navbar.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=ABeeZee&family=Permanent+Marker&display=swap");
+
+/* 1 rem = 16px */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "ABeeZee", sans-serif;
+
+  --primary: hsl(100, 60%, 50%);
+
+  --secondary-100: hsl(0, 0%, 90%);
+  --secondary-200: hsl(0, 0%, 80%);
+  --secondary-400: hsl(0, 0%, 60%);
+  --secondary-700: hsl(0, 0%, 30%);
+  --secondary-800: hsl(0, 0%, 20%);
+  --secondary-900: hsl(0, 0%, 10%);
+}

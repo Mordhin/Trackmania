@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -22,6 +23,7 @@
     "mongoose": "^5.12.14",
     "node": "^16.3.0",
     "nodemon": "^2.0.7",
-    "redux-form": "^8.3.7"
+    "redux-form": "^8.3.7",
+    "sass": "^1.35.2"
   }
 }

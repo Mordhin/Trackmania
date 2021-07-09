@@ -27,10 +27,14 @@ export const NavBar = () => {
   }, [location]);
 
   return (
-    <div>
-      <h1>Navbar</h1>
+    <div className="navbar">
+      <div className="title">
+        Track<span className="mania_color">mania</span>
+        <i class="fas fa-running"></i>
+      </div>
+
       {user ? (
-        <div>
+        <div className="user">
           <img src={user.result.imageUrl} alt="user" />
           {user.result.email}
           <button onClick={logout}>LogOut</button>

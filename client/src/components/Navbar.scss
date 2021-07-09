@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=ABeeZee&family=Permanent+Marker&display=swap");
+
+.navbar {
+  background-color: var(--secondary-800);
+  font-style: italic;
+  width: 100%;
+
+  padding: 0.2rem 1.2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 1px solid var(--secondary-900);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  color: var(--secondary-100);
+  font-family: "Permanent Marker", cursive;
+
+  .mania_color {
+    color: var(--primary);
+    font-family: inherit;
+  }
+
+  /* text-shadow: 1px 1px 5px var(--secondary-900); */
+
+  .fas {
+    margin-left: 0.4rem;
+    font-size: 2rem;
+    color: var(--primary);
+  }
+}
+
+.user {
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 30px;
+    border-radius: 50%;
+  }
+}
