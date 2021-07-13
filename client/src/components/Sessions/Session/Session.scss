@@ -23,11 +23,26 @@
   height: 4rem;
 }
 
-.cardios {
+.sessionBody {
+  height: 100%;
+  width: 100%;
+}
+
+.cardioBody {
+}
+
+.strengthBody {
 }
 
 .activityAndPagination {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.sum {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteSession } from "../../../actions/sessionActions";
 import { CardioType, StrengthType, BothType } from "./sessionTypes";
+import { MdTimer } from "react-icons/md";
+import { GiPathDistance } from "react-icons/gi";
+import { IoIosFitness } from "react-icons/io";
 
 export const Session = ({ data }) => {
   const dispatch = useDispatch();
@@ -52,9 +55,22 @@ export const Session = ({ data }) => {
         {sessionType === "bothType" && <BothType data={data} />}
       </div>
       <div className="sessionFooter">
-        <div>{data.duration}h</div>
-        <div>{km()}km</div>
-        <div>{data.strengths?.length}</div>
+        <div className="sum">
+          <MdTimer />
+          {data.duration}h
+        </div>
+        {sessionType !== "strengthType" && km() !== 0 && (
+          <div className="sum">
+            <GiPathDistance />
+            {km()}km
+          </div>
+        )}
+        {sessionType !== "cardioType" && (
+          <div className="sum">
+            <IoIosFitness />
+            {data.strengths?.length}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 export const CardioType = ({ data, handlePagination }) => {
   return (
-    <div className="cardios">
+    <div className="cardioBody">
       <div className="activityAndPagination">
         {handlePagination && (
           <button onClick={() => handlePagination("down")}>{"<"}</button>
@@ -37,21 +37,19 @@ export const StrengthType = ({ data }) => {
   };
 
   return (
-    <div>
-      <div>
-        <div className="activityAndPagination">
-          <button onClick={() => handlePagination("down")}>{"<"}</button>
-          <h4>{carousel[page]?.activity}</h4>
-          <button onClick={() => handlePagination("up")}>{">"}</button>
-        </div>
-        <div>{carousel[page]?.duration}h</div>
-        {carousel[page]?.series?.map((serie, index) => (
-          <div>
-            Serie #{index + 1} - {serie.repetition} reps with {serie.weight}
-            kg
-          </div>
-        ))}
+    <div className="strengthBody">
+      <div className="activityAndPagination">
+        <button onClick={() => handlePagination("down")}>{"<"}</button>
+        <h4>{carousel[page]?.activity}</h4>
+        <button onClick={() => handlePagination("up")}>{">"}</button>
       </div>
+      <div>{carousel[page]?.duration}h</div>
+      {carousel[page]?.series?.map((serie, index) => (
+        <div>
+          Serie #{index + 1} - {serie.repetition} reps with {serie.weight}
+          kg
+        </div>
+      ))}
     </div>
   );
 };
@@ -75,7 +73,7 @@ export const BothType = ({ data }) => {
         <CardioType data={data} handlePagination={handlePagination} />
       )}
       {page > 0 && (
-        <div>
+        <div className="strengthBody">
           <div className="activityAndPagination">
             <button onClick={() => handlePagination("down")}>{"<"}</button>
             <h4>{carousel.strength[page - 1]?.activity}</h4>
