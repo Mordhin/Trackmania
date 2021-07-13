@@ -7,6 +7,12 @@ export const Session = ({ data }) => {
 
   const currentUser = JSON.parse(localStorage.getItem("profile"));
 
+  const km = () => {
+    if (data.cardios.length > 0) {
+      return data.cardios.reduce((a, c) => a + c.distance, 0);
+    }
+  };
+
   const handleEdit = () => {};
 
   const handleDelete = (e) => {
@@ -16,38 +22,46 @@ export const Session = ({ data }) => {
 
   return (
     <div className="sessionCard">
-      <h3>{data.date}</h3>
-      <p>{data.duration} heures</p>
-      <div>
-        <h4>Cardios</h4>
-        <ul>
-          {data.cardios?.map((cardio) => (
-            <li>
-              {cardio.activity} - {cardio.distance}km en {cardio.duration}h
-            </li>
-          ))}
-        </ul>
+      <div className="sessionHeader">
+        <h3>{data.date}</h3>
+        <button onClick={handleEdit}>Edit</button>
+        {(currentUser?.result._id || currentUser?.result.googleId) ===
+          data.creator && <button onClick={handleDelete}>Delete</button>}
       </div>
-      <div>
-        <h4>Strengths</h4>
-        <ul>
-          {data.strengths?.map((strengths) => (
-            <li>
-              {strengths.activity} - {strengths.duration}h
-              {strengths.series?.map((serie, index) => (
-                <div>
-                  Serie #{index + 1} - {serie.repetition} reps with{" "}
-                  {serie.weight}kg
-                </div>
-              ))}
-            </li>
-          ))}
-        </ul>
+      <div className="sessionBody">
+        <div>{data.creator}</div>
+        <div>
+          <h4>Cardios</h4>
+          <ul>
+            {data.cardios?.map((cardio) => (
+              <li>
+                {cardio.activity} - {cardio.distance}km en {cardio.duration}h
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h4>Strengths</h4>
+          <ul>
+            {data.strengths?.map((strengths) => (
+              <li>
+                {strengths.activity} - {strengths.duration}h
+                {strengths.series?.map((serie, index) => (
+                  <div>
+                    Serie #{index + 1} - {serie.repetition} reps with{" "}
+                    {serie.weight}kg
+                  </div>
+                ))}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div>{data.creator}</div>
-      <button onClick={handleEdit}>Edit</button>
-      {(currentUser?.result._id || currentUser?.result.googleId) ===
-        data.creator && <button onClick={handleDelete}>Delete</button>}
+      <div className="sessionFooter">
+        <div>{data.duration}h</div>
+        <div>{km()}km</div>
+        <div>{data.strengths?.length}</div>
+      </div>
     </div>
   );
 };
