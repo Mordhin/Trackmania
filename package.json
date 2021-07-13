@@ -23,6 +23,7 @@
     "mongoose": "^5.12.14",
     "node": "^16.3.0",
     "nodemon": "^2.0.7",
+    "react-responsive-carousel": "^3.2.19",
     "redux-form": "^8.3.7",
     "sass": "^1.35.2"
   }

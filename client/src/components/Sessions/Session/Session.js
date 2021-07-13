@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteSession } from "../../../actions/sessionActions";
+import { CardioType, StrengthType, BothType } from "./sessionTypes";
 
 export const Session = ({ data }) => {
   const dispatch = useDispatch();
 
   const currentUser = JSON.parse(localStorage.getItem("profile"));
+  const [sessionType, setSessionType] = useState(null);
+
+  useEffect(() => {
+    if (data.cardios.length > 0 && data.strengths.length === 0) {
+      setSessionType("cardioType");
+    }
+    if (data.cardios.length === 0 && data.strengths.length > 0) {
+      setSessionType("strengthType");
+    }
+    if (data.cardios.length > 0 && data.strengths.length > 0) {
+      setSessionType("bothType");
+    }
+  }, []);
 
   const km = () => {
     if (data.cardios.length > 0) {
-      return data.cardios.reduce((a, c) => a + c.distance, 0);
+      return data.cardios.reduce((a, c) => a + (c.distance || 0), 0);
     }
   };
 
@@ -30,32 +44,12 @@ export const Session = ({ data }) => {
       </div>
       <div className="sessionBody">
         <div>{data.creator}</div>
-        <div>
-          <h4>Cardios</h4>
-          <ul>
-            {data.cardios?.map((cardio) => (
-              <li>
-                {cardio.activity} - {cardio.distance}km en {cardio.duration}h
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h4>Strengths</h4>
-          <ul>
-            {data.strengths?.map((strengths) => (
-              <li>
-                {strengths.activity} - {strengths.duration}h
-                {strengths.series?.map((serie, index) => (
-                  <div>
-                    Serie #{index + 1} - {serie.repetition} reps with{" "}
-                    {serie.weight}kg
-                  </div>
-                ))}
-              </li>
-            ))}
-          </ul>
-        </div>
+
+        {sessionType === "cardioType" && <CardioType data={data} />}
+
+        {sessionType === "strengthType" && <StrengthType data={data} />}
+
+        {sessionType === "bothType" && <BothType data={data} />}
       </div>
       <div className="sessionFooter">
         <div>{data.duration}h</div>
