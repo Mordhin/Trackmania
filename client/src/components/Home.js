@@ -6,7 +6,7 @@ import ReduxForm from "./Form/ReduxForm";
 
 export const Home = () => {
   return (
-    <div>
+    <div className="container">
       <ReduxForm />
       <Sessions />
     </div>
