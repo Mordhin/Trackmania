@@ -1,0 +1,32 @@
+.sessionsGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 18rem);
+  gap: 2rem;
+
+  width: fit-content;
+  margin: 2rem auto;
+}
+
+@media (max-width: 100rem) {
+  .sessionsGrid {
+    grid-template-columns: repeat(4, 18rem);
+  }
+}
+
+@media (max-width: 80rem) {
+  .sessionsGrid {
+    grid-template-columns: repeat(3, 18rem);
+  }
+}
+
+@media (max-width: 60rem) {
+  .sessionsGrid {
+    grid-template-columns: repeat(2, 18rem);
+  }
+}
+
+@media (max-width: 40rem) {
+  .sessionsGrid {
+    grid-template-columns: repeat(1, 18rem);
+  }
+}

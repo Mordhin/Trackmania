@@ -21,11 +21,10 @@ export const Sessions = () => {
   );
 
   return (
-    <>
-      <h2>Sessions:</h2>
+    <div className="sessionsGrid">
       {sessions.map((session) => {
         return <Session data={session}></Session>;
       })}
-    </>
+    </div>
   );
 };

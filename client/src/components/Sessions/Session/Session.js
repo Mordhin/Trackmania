@@ -15,7 +15,7 @@ export const Session = ({ data }) => {
   };
 
   return (
-    <div>
+    <div className="sessionCard">
       <h3>{data.date}</h3>
       <p>{data.duration} heures</p>
       <div>
