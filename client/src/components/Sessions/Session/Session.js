@@ -61,30 +61,28 @@ export const Session = ({ data }) => {
         {(currentUser?.result._id || currentUser?.result.googleId) ===
           data.creator && <button onClick={handleDelete}>Delete</button>}
       </div>
+
       <div className="sessionBody">
-        <div>{data.creator}</div>
-
         {sessionType === "cardioType" && <CardioType data={data} />}
-
         {sessionType === "strengthType" && <StrengthType data={data} />}
-
         {sessionType === "bothType" && <BothType data={data} />}
       </div>
+
       <div className={`sessionFooter ${sessionType}`}>
         <div className="sum">
           <MdTimer />
-          {data.duration}h
+          <div>{data.duration}h</div>
         </div>
         {sessionType !== "strengthType" && km() !== 0 && (
           <div className="sum">
             <GiPathDistance />
-            {km()}km
+            <div>{km()}km</div>
           </div>
         )}
         {sessionType !== "cardioType" && (
           <div className="sum">
             <IoIosFitness />
-            {data.strengths?.length}
+            <div>{data.strengths?.length}</div>
           </div>
         )}
       </div>
