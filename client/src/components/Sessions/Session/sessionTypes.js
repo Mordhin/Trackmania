@@ -44,12 +44,14 @@ export const StrengthType = ({ data }) => {
         <button onClick={() => handlePagination("up")}>{">"}</button>
       </div>
       <div>{carousel[page]?.duration}h</div>
-      {carousel[page]?.series?.map((serie, index) => (
-        <div>
-          Serie #{index + 1} - {serie.repetition} reps with {serie.weight}
-          kg
-        </div>
-      ))}
+      <ul>
+        {carousel[page]?.series?.map((serie, index) => (
+          <li>
+            {index + 1}# - {serie.repetition} reps with {serie.weight}
+            kg
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
@@ -68,7 +70,7 @@ export const BothType = ({ data }) => {
   };
 
   return (
-    <div>
+    <>
       {page === 0 && (
         <CardioType data={data} handlePagination={handlePagination} />
       )}
@@ -81,14 +83,16 @@ export const BothType = ({ data }) => {
           </div>
 
           <div>{carousel.strength[page - 1]?.duration}h</div>
-          {carousel.strength[page - 1]?.series?.map((serie, index) => (
-            <div>
-              Serie #{index + 1} - {serie.repetition} reps with {serie.weight}
-              kg
-            </div>
-          ))}
+          <ul>
+            {carousel.strength[page - 1]?.series?.map((serie, index) => (
+              <li>
+                {index + 1}# - {serie.repetition} reps with {serie.weight}
+                kg
+              </li>
+            ))}
+          </ul>
         </div>
       )}
-    </div>
+    </>
   );
 };
