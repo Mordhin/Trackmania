@@ -1,9 +1,9 @@
 .sessionCard {
   background-color: white;
-  height: 18rem;
+  height: 24rem;
   width: 18rem;
   border: 1px solid var(--secondary-200);
-  border-radius: 5px;
+  border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -12,6 +12,24 @@
 .sessionHeader {
   display: flex;
   justify-content: space-between;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  img {
+    width: 1em;
+  }
+  .cardioLogo {
+    color: var(--primary-cardio);
+  }
+  .strengthLogo {
+    color: var(--primary-strength);
+  }
+  .bothLogos {
+    color: var(--primary-both);
+    svg:first-child {
+      margin-right: 0.4em;
+    }
+  }
 }
 
 .sessionFooter {
@@ -21,6 +39,37 @@
   justify-content: space-around;
   width: 100%;
   height: 4rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  > div {
+    width: 100%;
+  }
+  div:first-child {
+    border-bottom-left-radius: 0.5rem;
+  }
+  div:last-child {
+    border-bottom-right-radius: 0.5rem;
+  }
+  &.cardioType {
+    background: var(--primary-cardio);
+    div:first-child {
+      border-right: 1px solid rgba(0, 0, 0, 0.2);
+    }
+  }
+  &.strengthType {
+    background: var(--primary-strength);
+    div:first-child {
+      border-right: 1px solid rgba(0, 0, 0, 0.2);
+    }
+  }
+  &.bothType {
+    background: var(--primary-both);
+    div:first-child {
+      border-right: 1px solid rgba(0, 0, 0, 0.2);
+    }
+    div:last-child {
+      border-left: 1px solid rgba(0, 0, 0, 0.2);
+    }
+  }
 }
 
 .sessionBody {

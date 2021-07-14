@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import history from "../history";
 import decode from "jwt-decode";
+import logo from "../assets/running.svg";
+import SvgRunning from "./svg/Running";
 
 export const NavBar = () => {
   const dispatch = useDispatch();
@@ -30,7 +32,9 @@ export const NavBar = () => {
     <div className="navbar">
       <div className="title">
         Track<span className="mania_color">mania</span>
-        <i class="fas fa-running"></i>
+        <div className="runningLogo">
+          <SvgRunning />
+        </div>
       </div>
 
       {user ? (

@@ -5,6 +5,8 @@ import { CardioType, StrengthType, BothType } from "./sessionTypes";
 import { MdTimer } from "react-icons/md";
 import { GiPathDistance } from "react-icons/gi";
 import { IoIosFitness } from "react-icons/io";
+import { FaHeartbeat } from "react-icons/fa";
+import SvgDumbbell from "../../svg/Dumbbell";
 
 export const Session = ({ data }) => {
   const dispatch = useDispatch();
@@ -40,8 +42,22 @@ export const Session = ({ data }) => {
   return (
     <div className="sessionCard">
       <div className="sessionHeader">
-        <h3>{data.date}</h3>
-        <button onClick={handleEdit}>Edit</button>
+        <div>{data.date}</div>
+        {sessionType === "cardioType" ? (
+          <div className="cardioLogo">
+            <FaHeartbeat />
+          </div>
+        ) : sessionType === "strengthType" ? (
+          <div className="strengthLogo">
+            <SvgDumbbell />
+          </div>
+        ) : (
+          <div className="bothLogos">
+            <FaHeartbeat />
+            <SvgDumbbell />
+          </div>
+        )}
+        {/* <button onClick={handleEdit}>Edit</button> */}
         {(currentUser?.result._id || currentUser?.result.googleId) ===
           data.creator && <button onClick={handleDelete}>Delete</button>}
       </div>
@@ -54,7 +70,7 @@ export const Session = ({ data }) => {
 
         {sessionType === "bothType" && <BothType data={data} />}
       </div>
-      <div className="sessionFooter">
+      <div className={`sessionFooter ${sessionType}`}>
         <div className="sum">
           <MdTimer />
           {data.duration}h
