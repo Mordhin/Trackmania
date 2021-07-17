@@ -7,7 +7,7 @@ export const CardioType = ({ data, handlePagination }) => {
         {handlePagination && (
           <button onClick={() => handlePagination("down")}>{"<"}</button>
         )}
-        <h4>Cardios</h4>
+        <div>Cardios</div>
         {handlePagination && (
           <button onClick={() => handlePagination("up")}>{">"}</button>
         )}
@@ -40,10 +40,9 @@ export const StrengthType = ({ data }) => {
     <div className="strengthBody">
       <div className="activityAndPagination">
         <button onClick={() => handlePagination("down")}>{"<"}</button>
-        <h4>{carousel[page]?.activity}</h4>
+        <div>{carousel[page]?.activity}</div>
         <button onClick={() => handlePagination("up")}>{">"}</button>
       </div>
-      <div>{carousel[page]?.duration}h</div>
       <ul>
         {carousel[page]?.series?.map((serie, index) => (
           <li>
@@ -51,6 +50,7 @@ export const StrengthType = ({ data }) => {
             kg
           </li>
         ))}
+        <div>Durée: {carousel[page]?.duration}h</div>
       </ul>
     </div>
   );
@@ -78,11 +78,10 @@ export const BothType = ({ data }) => {
         <div className="strengthBody">
           <div className="activityAndPagination">
             <button onClick={() => handlePagination("down")}>{"<"}</button>
-            <h4>{carousel.strength[page - 1]?.activity}</h4>
+            <div>{carousel.strength[page - 1]?.activity}</div>
             <button onClick={() => handlePagination("up")}>{">"}</button>
           </div>
 
-          <div>{carousel.strength[page - 1]?.duration}h</div>
           <ul>
             {carousel.strength[page - 1]?.series?.map((serie, index) => (
               <li>
@@ -90,6 +89,7 @@ export const BothType = ({ data }) => {
                 kg
               </li>
             ))}
+            <div>Durée: {carousel.strength[page - 1]?.duration}h</div>
           </ul>
         </div>
       )}

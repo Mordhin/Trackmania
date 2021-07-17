@@ -42,7 +42,7 @@ export const Session = ({ data }) => {
   return (
     <div className="sessionCard">
       <div className="sessionHeader">
-        <div>{data.date}</div>
+        <div className={`date ${sessionType}`}>{data.date}</div>
         {sessionType === "cardioType" ? (
           <div className="cardioLogo">
             <FaHeartbeat />

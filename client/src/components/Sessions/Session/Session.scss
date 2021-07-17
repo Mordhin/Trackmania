@@ -1,7 +1,7 @@
 .sessionCard {
   background-color: white;
   height: 20rem;
-  width: 18rem;
+  width: 16rem;
   border: 1px solid var(--secondary-200);
   border-radius: 0.5rem;
   display: flex;
@@ -11,20 +11,36 @@
 .sessionHeader {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0.5rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  img {
-    width: 1em;
+  font-size: 0.8rem;
+  .date {
+    background-color: black;
+    color: white;
+
+    padding: 0.2rem 1rem;
+    border-radius: 50px;
+    &.cardioType {
+      background-color: var(--primary-cardio-fade);
+    }
+    &.strengthType {
+      background-color: var(--primary-strength-fade);
+    }
+    &.bothType {
+      background-color: var(--primary-both-fade);
+    }
   }
   .cardioLogo {
     color: var(--primary-cardio);
+    font-size: 1.2em;
   }
   .strengthLogo {
     color: var(--primary-strength);
+    font-size: 1.2em;
   }
   .bothLogos {
     color: var(--primary-both);
+    font-size: 1.2em;
     svg:first-child {
       margin-right: 0.4em;
     }
@@ -74,11 +90,12 @@
 .sessionBody {
   height: 100%;
   width: 100%;
-  margin-top: 5rem;
 
   ul {
     list-style: none;
     text-align: center;
+    color: var(--secondary-500);
+    line-height: 1.4rem;
   }
 }
 
@@ -86,14 +103,18 @@
 .strengthBody {
   height: 100%;
   width: 100%;
-  transition: ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--secondary-800);
 }
 
 .activityAndPagination {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
 }
 
 .sum {
@@ -102,4 +123,5 @@
   align-items: center;
   justify-content: center;
   font-size: 1rem;
+  padding: 0.5rem;
 }
