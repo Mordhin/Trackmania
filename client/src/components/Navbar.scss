@@ -22,6 +22,7 @@
   font-family: "Permanent Marker", cursive;
 
   .dynamic_logo {
+    transition: color 2s ease;
     display: flex;
     align-items: center;
     font-family: inherit;

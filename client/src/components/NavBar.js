@@ -9,7 +9,9 @@ import SvgRunning from "./svg/Running";
 export const NavBar = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const [logo, setLogo] = useState("strengthLogo");
+  const array = ["cardioLogo", "strengthLogo", "bothLogo"];
+  let index = 0;
+  const [logo, setLogo] = useState(array[index]);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
   const logout = () => {
@@ -27,20 +29,19 @@ export const NavBar = () => {
     }
 
     setUser(JSON.parse(localStorage.getItem("profile")));
-
-    setInterval(() => {
-      logoCycle(logo);
-    }, 2000);
   }, [location]);
 
-  const logoCycle = (logo) => {
-    const array = ["cardioLogo", "strengthLogo", "bothLogo"];
-    const logoIndex = array.indexOf(logo);
-    if (logoIndex === 2) logoIndex = -1;
-    const nextLogo = array[logoIndex + 1];
-    console.log(nextLogo);
-    setLogo(nextLogo);
-  };
+  useEffect(() => {
+    const logoInterval = setInterval(() => {
+      index += 1;
+      if (index === 3) index = 0;
+      setLogo(array[index]);
+    }, 10000);
+
+    return () => {
+      clearInterval(logoInterval);
+    };
+  }, []);
 
   return (
     <div className="navbar">

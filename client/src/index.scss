@@ -16,13 +16,17 @@ body {
   font-family: "ABeeZee", sans-serif;
   background-color: var(--secondary-30);
 
+  --strength: 333, 63%, 56%;
+  --cardio: 229, 63%, 60%;
+  --both: 280, 63%, 38%;
+
   --primary: hsl(100, 63%, 50%);
-  --primary-strength: hsl(333, 63%, 56%);
-  --primary-strength-fade: hsl(333, 63%, 56%, 40%);
-  --primary-cardio: hsl(229, 63%, 60%);
-  --primary-cardio-fade: hsl(229, 63%, 60%, 40%);
-  --primary-both: hsl(280, 63%, 38%);
-  --primary-both-fade: hsl(280, 63%, 38%, 40%);
+  --primary-strength: hsl(var(--strength));
+  --primary-strength-fade: hsl(var(--strength), 40%);
+  --primary-cardio: hsl(var(--cardio));
+  --primary-cardio-fade: hsl(var(--cardio), 40%);
+  --primary-both: hsl(var(--both));
+  --primary-both-fade: hsl(var(--both), 40%);
 
   --secondary-30: hsl(0, 0%, 97%);
   --secondary-100: hsl(0, 0%, 90%);
