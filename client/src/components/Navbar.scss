@@ -21,18 +21,23 @@
   color: var(--secondary-100);
   font-family: "Permanent Marker", cursive;
 
-  .mania_color {
-    color: var(--primary);
-    font-family: inherit;
-  }
-
-  /* text-shadow: 1px 1px 5px var(--secondary-900); */
-
-  .runningLogo {
-    margin-left: 0.4rem;
-    color: var(--primary);
+  .dynamic_logo {
     display: flex;
     align-items: center;
+    font-family: inherit;
+    div:last-child {
+      margin-left: 0.4rem;
+      display: flex;
+    }
+  }
+  .cardioLogo {
+    color: var(--primary-cardio);
+  }
+  .strengthLogo {
+    color: var(--primary-strength);
+  }
+  .bothLogo {
+    color: var(--primary-both);
   }
 }
 

@@ -10,7 +10,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
   font-family: "ABeeZee", sans-serif;
+  background-color: var(--secondary-30);
 
   --primary: hsl(100, 63%, 50%);
   --primary-strength: hsl(333, 63%, 56%);
@@ -29,10 +33,6 @@
   --secondary-700: hsl(0, 0%, 30%);
   --secondary-800: hsl(0, 0%, 20%);
   --secondary-900: hsl(0, 0%, 10%);
-}
-
-body {
-  background-color: var(--secondary-30);
 }
 
 .container {

@@ -9,6 +9,7 @@ import SvgRunning from "./svg/Running";
 export const NavBar = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const [logo, setLogo] = useState("strengthLogo");
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
   const logout = () => {
@@ -26,14 +27,30 @@ export const NavBar = () => {
     }
 
     setUser(JSON.parse(localStorage.getItem("profile")));
+
+    setInterval(() => {
+      logoCycle(logo);
+    }, 2000);
   }, [location]);
+
+  const logoCycle = (logo) => {
+    const array = ["cardioLogo", "strengthLogo", "bothLogo"];
+    const logoIndex = array.indexOf(logo);
+    if (logoIndex === 2) logoIndex = -1;
+    const nextLogo = array[logoIndex + 1];
+    console.log(nextLogo);
+    setLogo(nextLogo);
+  };
 
   return (
     <div className="navbar">
       <div className="title">
-        Track<span className="mania_color">mania</span>
-        <div className="runningLogo">
-          <SvgRunning />
+        <div>Track</div>
+        <div className={`dynamic_logo ${logo}`}>
+          <div>mania</div>
+          <div className="runningLogo">
+            <SvgRunning />
+          </div>
         </div>
       </div>
 
