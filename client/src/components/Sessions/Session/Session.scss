@@ -127,3 +127,23 @@
   font-size: 1rem;
   padding: 0.5rem;
 }
+
+.arrowButton {
+  height: 10rem;
+  width: 2rem;
+  transition: background 0.4s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    background: rgba(0, 0, 0, 0.2);
+  }
+  &:active {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
+
+.emptyButton {
+  height: 10rem;
+  width: 2rem;
+}
