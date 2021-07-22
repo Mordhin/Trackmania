@@ -4,7 +4,7 @@ import { deleteSession } from "../../../actions/sessionActions";
 import { CardioType, StrengthType, BothType } from "./sessionTypes";
 import { MdTimer } from "react-icons/md";
 import { GiPathDistance } from "react-icons/gi";
-import { IoIosFitness } from "react-icons/io";
+import { IoIosFitness, IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FaHeartbeat } from "react-icons/fa";
 import SvgDumbbell from "../../svg/Dumbbell";
 
@@ -87,16 +87,24 @@ export const Session = ({ data }) => {
         {sessionType === "cardioType" && <CardioType data={data} />}
         {sessionType === "strengthType" && (
           <>
-            <button onClick={() => handlePagination("down", "strength")}>{"<"}</button>
+            {strengthPage === 0 ? <div className="emptyButton"></div> : 
+              <div className="arrowButton" onClick={() => handlePagination("down", "strength")}><IoIosArrowBack /></div>
+            }
             <StrengthType data={data} strengthPage={strengthPage} strengthCarousel={strengthCarousel}/>
-            <button onClick={() => handlePagination("up", "strength")}>{">"}</button>
+            {strengthPage === strengthCarousel.length -1 ? <div className="emptyButton"></div> : 
+              <div className="arrowButton" onClick={() => handlePagination("up", "strength")}><IoIosArrowForward /></div>
+            }
           </>
         )}
         {sessionType === "bothType" && (
           <>
-            <button onClick={() => handlePagination("down", "both")}>{"<"}</button>
+            {bothPage === 0 ? <div className="emptyButton"></div> : 
+              <div className="arrowButton" onClick={() => handlePagination("down", "both")}><IoIosArrowBack /></div>
+            }
             <BothType data={data} bothPage={bothPage} bothCarousel={bothCarousel}/>
-            <button onClick={() => handlePagination("up", "both")}>{">"}</button>
+            {bothPage === data.strengths.length ? <div className="emptyButton"></div> : 
+              <div className="arrowButton" onClick={() => handlePagination("up", "both")}><IoIosArrowForward /></div>
+            }
           </>
         )}
       </div>
