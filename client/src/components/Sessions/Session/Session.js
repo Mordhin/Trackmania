@@ -83,7 +83,7 @@ export const Session = ({ data }) => {
           data.creator && <button onClick={handleDelete}>Delete</button>}
       </div>
 
-      <div className="sessionBody">
+      <div key={Math.random()} className="sessionBody">
         {sessionType === "cardioType" && <CardioType data={data} />}
         {sessionType === "strengthType" && (
           <>

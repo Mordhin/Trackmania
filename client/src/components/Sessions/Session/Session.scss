@@ -92,13 +92,18 @@
   width: 100%;
   display: flex;
   align-items: center;
-
+  
   ul {
     list-style: none;
     text-align: center;
     color: var(--secondary-500);
     line-height: 1.4rem;
   }
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;};
+  100% {opacity: 100;};
 }
 
 .cardioBody,
@@ -109,6 +114,7 @@
   flex-direction: column;
   justify-content: center;
   color: var(--secondary-800);
+  animation: fadeIn 0.4s ease;
 }
 
 .activityAndPagination {
