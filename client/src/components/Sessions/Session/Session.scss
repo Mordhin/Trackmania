@@ -6,6 +6,8 @@
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
+  position: relative;
+  margin-left: 1rem;
 }
 
 .sessionHeader {
@@ -19,6 +21,7 @@
     color: white;
 
     padding: 0.2rem 1rem;
+    margin-right: 0.3rem;
     border-radius: 50px;
     &.cardioType {
       background-color: var(--primary-cardio-fade);
@@ -30,17 +33,22 @@
       background-color: var(--primary-both-fade);
     }
   }
+
+
   .cardioLogo {
     color: var(--primary-cardio);
     font-size: 1.2em;
+    display: flex;
   }
   .strengthLogo {
     color: var(--primary-strength);
     font-size: 1.2em;
+    display: flex;
   }
   .bothLogos {
     color: var(--primary-both);
     font-size: 1.2em;
+    display: flex;
     svg:first-child {
       margin-right: 0.4em;
     }
@@ -102,11 +110,6 @@
   }
 }
 
-@keyframes fadeIn {
-  0% {opacity: 0;};
-  100% {opacity: 100;};
-}
-
 .cardioBody,
 .strengthBody {
   max-height: 100%;
@@ -115,7 +118,6 @@
   flex-direction: column;
   justify-content: start;
   color: var(--secondary-800);
-  animation: fadeIn 0.4s ease;
   overflow-y: auto;
   &::-webkit-scrollbar {
     display:none;
@@ -158,4 +160,62 @@
 .emptyButton {
   height: 10rem;
   width: 2rem;
+}
+
+.adminButtons {
+  position: absolute;
+  top: 0.5rem;
+  right: 2rem;
+  width: 2.5rem;
+  text-align: right;
+  z-index: -1;
+  font-size: 1.5rem;
+  color: var(--secondary-300);
+  
+  div {
+    transition: color 0.2s ease;
+  }
+  .deleteButton:hover {
+    color: red;
+  }
+  .editButton:hover {
+    color: var(--secondary-700);
+  }
+}
+
+.adminButtons.active {
+  transition: right 0.4s ease, z-index 0s linear 0.3s;
+  right: -1.8rem;
+  z-index: 1;
+}
+.adminButtons.inactive {
+  transition: right 0.4s ease 0s, z-index 0s linear 0s;
+  z-index: -1;
+}
+
+.dateAndAdmin {
+  display: flex;
+  align-items: center;
+  .admin {
+    font-size: 1.2rem;
+    display: flex;
+    &.cardioType {
+      color: var(--primary-cardio-fade);
+      &:hover {
+        color: var(--primary-cardio);
+      }
+    }
+    &.strengthType {
+      color: var(--primary-strength-fade);
+      &:hover {
+        color: var(--primary-strength);
+      }
+    }
+    &.bothType {
+      color: var(--primary-both-fade);
+      &:hover {
+        color: var(--primary-both);
+      }
+    }
+  }
 }
