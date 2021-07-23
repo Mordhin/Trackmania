@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import history from "../../history";
 import { Field, FieldArray, reduxForm } from "redux-form";
 import { createSession } from "../../actions/sessionActions";
 import { MdAddCircle, MdRemoveCircle } from "react-icons/md";
@@ -10,6 +11,7 @@ const ReduxForm = (props) => {
   const onSubmit = (formValues) => {
     console.log(formValues);
     dispatch(createSession(formValues));
+    history.push("/");
   };
 
   const renderField = ({ input, label, type, meta }) => {
@@ -166,6 +168,7 @@ const ReduxForm = (props) => {
         <button className="clearButton" type="button" disabled={props.pristine || props.submitting} onClick={props.reset}>
             Effacer
           </button>
+        <button onClick={() => history.push("/")}className="clearButton" type="button" disabled={props.submitting}>Annuler</button>
       </div>
     </form>
   );
