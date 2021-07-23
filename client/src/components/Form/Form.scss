@@ -1,0 +1,144 @@
+.form {
+  width: 40rem;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.formTitle {
+  font-size: 2rem;
+  color: var(--secondary-800);
+  margin-bottom: 2rem;
+}
+
+.field {
+  width: 100%;
+  margin-bottom: 2rem;
+  color: var(--secondary-800);
+  display: flex;
+  flex-direction: column;
+  input {
+    width: 100%;
+    height: 1.5rem;
+  }
+}
+
+.fields {
+  display: flex;
+  justify-content: space-between;
+  > div:first-child {
+    margin-right: 1rem;
+  }
+  .field {
+    margin-bottom: unset !important;
+  }
+}
+
+.fieldArray {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  .field {
+    margin-bottom: 1rem;
+    > div:last-child {
+      margin-bottom: unset !important;
+    }
+  }
+}
+
+.fieldArrays {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2rem;
+}
+
+.addCardioButton, .addStrengthButton, .addSerieButton, .submitButton, .clearButton {
+  color: white;
+  width: 100%;
+  text-align: center;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;  
+  font: inherit;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  svg {
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+  }
+}
+
+.addStrengthButton {
+  background-color: var(--primary-strength);
+  height: 2rem;
+}
+.addSerieButton {
+  background-color: var(--primary-strength);
+  height: 2rem;
+  width: auto;
+}
+.addCardioButton {
+  background-color: var(--primary-cardio);
+  height: 2rem
+}
+.submitButton {
+  background-color: var(--secondary-800);
+  width: 10rem;
+}
+.clearButton {
+  background-color: var(--secondary-300);
+  margin-left: 1rem;
+  width: fit-content;
+}
+
+.bottomButtons {
+  display: flex;
+  justify-content: center;
+}
+
+.cardioActivity, .strengthActivity {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.strengthActivity {
+  background-color: var(--primary-strength-fade);
+}
+.cardioActivity {
+  background-color: var(--primary-cardio-fade);
+}
+
+.activityHeader {
+  color: var(--secondary-800);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.removeButton {
+  color: white;
+  background: inherit;
+  border: none;
+  outline: none;  
+  font: inherit;
+  display: flex;
+  svg {
+    font-size: 1.5rem;
+  }
+}
+
+.errorMessage {
+  color: var(--secondary-300);
+  font-style: italic;
+  height: 1rem;
+}
+
+@media (max-width: 40rem) {
+  .fieldArrays {
+    grid-auto-flow: row;
+  }
+}

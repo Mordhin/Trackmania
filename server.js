@@ -17,6 +17,8 @@ app.use(express.static("client/build"));
 
 app.use("/sessions", sessionRoutes);
 app.use("/user", userRoutes);
+
+const __dirname = path.resolve();
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });

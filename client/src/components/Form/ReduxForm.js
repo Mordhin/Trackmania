@@ -1,43 +1,52 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import history from "../../history";
 import { Field, FieldArray, reduxForm } from "redux-form";
 import { createSession } from "../../actions/sessionActions";
+import { MdAddCircle, MdRemoveCircle } from "react-icons/md";
+import { IoSend } from "react-icons/io5"
 
 const ReduxForm = (props) => {
   const dispatch = useDispatch();
   const onSubmit = (formValues) => {
     console.log(formValues);
     dispatch(createSession(formValues));
+    history.push("/");
   };
 
   const renderField = ({ input, label, type, meta }) => {
     return (
-      <div>
+      <div className="field">
         <label>{label}</label>
-        <input {...input} type={type} />
-        <div>{meta.error}</div>
+        <div className="input">
+          <input {...input} type={type} />
+        </div>
+        <div className="errorMessage">{meta.error}</div>
       </div>
     );
   };
 
   const renderCardios = ({ fields, meta }) => (
-    <ul>
+    <ul className="fieldArray">
       <li>
-        <button type="button" onClick={() => fields.push({})}>
-          Add Cardios
+        <button className="addCardioButton" type="button" onClick={() => fields.push({})}>
+          Ajouter cardio <MdAddCircle />
         </button>
         {meta.submitFailed && meta.error && <span>{meta.error}</span>}
       </li>
       {fields.map((cardio, index) => (
-        <li key={index}>
-          <button
-            type="button"
-            title="Remove Cardio"
-            onClick={() => fields.remove(index)}
-          >
-            Remove Cardio
-          </button>
-          <h4>Cardio #{index + 1}</h4>
+        <li key={index} className="cardioActivity">
+          <div className="activityHeader">
+            <h4>Cardio #{index + 1}</h4>
+            <button
+              className="removeButton"
+              type="button"
+              title="Remove Cardio"
+              onClick={() => fields.remove(index)}
+            >
+              <MdRemoveCircle />
+            </button>
+          </div>
           <Field
             name={`${cardio}.activity`}
             type="text"
@@ -62,23 +71,26 @@ const ReduxForm = (props) => {
   );
 
   const renderStrengths = ({ fields, meta }) => (
-    <ul>
+    <ul className="fieldArray">
       <li>
-        <button type="button" onClick={() => fields.push({})}>
-          Add Strengths activity
+        <button className="addStrengthButton" type="button" onClick={() => fields.push({})}>
+          Ajouter exercice <MdAddCircle />
         </button>
         {meta.submitFailed && meta.error && <span>{meta.error}</span>}
       </li>
       {fields.map((strength, index) => (
-        <li key={index}>
-          <button
-            type="button"
-            title="Remove Strength"
-            onClick={() => fields.remove(index)}
-          >
-            Remove Strength
-          </button>
-          <h4>Strength #{index + 1}</h4>
+        <li key={index} className="strengthActivity">
+          <div className="activityHeader">
+            <h4>Fitness #{index + 1}</h4>
+            <button
+              className="removeButton"
+              type="button"
+              title="Remove Strength"
+              onClick={() => fields.remove(index)}
+            >
+              <MdRemoveCircle />
+            </button>
+          </div>
           <Field
             name={`${strength}.activity`}
             type="text"
@@ -98,42 +110,48 @@ const ReduxForm = (props) => {
   );
 
   const renderSeries = ({ fields, meta }) => (
-    <ul>
+    <ul className="fieldArray">
       <li>
-        <button type="button" onClick={() => fields.push({})}>
-          Add Series
+        <button className="addSerieButton" type="button" onClick={() => fields.push({})}>
+          Ajouter série +
         </button>
         {meta.submitFailed && meta.error && <span>{meta.error}</span>}
       </li>
       {fields.map((serie, index) => (
-        <li key={index}>
-          <button
-            type="button"
-            title="Remove Serie"
-            onClick={() => fields.remove(index)}
-          >
-            Remove Serie
-          </button>
-          <h4>Serie #{index + 1}</h4>
-          <Field
-            name={`${serie}.weight`}
-            type="number"
-            component={renderField}
-            label="Weight"
-          />
-          <Field
-            name={`${serie}.repetition`}
-            type="number"
-            component={renderField}
-            label="Repetition"
-          />
+        <li key={index} className="strengthActivity">
+          <div className="activityHeader">
+            <h4>Serie #{index + 1}</h4>
+            <button
+              className="removeButton"
+              type="button"
+              title="Remove Serie"
+              onClick={() => fields.remove(index)}
+            >
+              -
+            </button>
+          </div>
+          <div className="fields">
+            <Field
+              name={`${serie}.weight`}
+              type="number"
+              component={renderField}
+              label="Weight"
+            />
+            <Field
+              name={`${serie}.repetition`}
+              type="number"
+              component={renderField}
+              label="Repetition"
+            />
+          </div>
         </li>
       ))}
     </ul>
   );
 
   return (
-    <form onSubmit={props.handleSubmit(onSubmit)}>
+    <form onSubmit={props.handleSubmit(onSubmit)} className="form">
+      <div className="formTitle">Nouvelle séance</div>
       <Field name="date" component={renderField} label="Date" type="text" />
       <Field
         name="duration"
@@ -141,9 +159,17 @@ const ReduxForm = (props) => {
         label="Duration"
         type="number"
       />
-      <FieldArray name="cardios" component={renderCardios} />
-      <FieldArray name="strengths" component={renderStrengths} />
-      <button type="submit">Submit</button>
+      <div className="fieldArrays">
+        <FieldArray name="cardios" component={renderCardios} />
+        <FieldArray name="strengths" component={renderStrengths} />
+      </div>
+      <div className="bottomButtons">
+        <button className="submitButton" type="submit" disabled={props.submitting}>Valider <IoSend /></button>
+        <button className="clearButton" type="button" disabled={props.pristine || props.submitting} onClick={props.reset}>
+            Effacer
+          </button>
+        <button onClick={() => history.push("/")}className="clearButton" type="button" disabled={props.submitting}>Annuler</button>
+      </div>
     </form>
   );
 };
