@@ -3,7 +3,8 @@ import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import history from "../history";
 import decode from "jwt-decode";
-import logo from "../assets/running.svg";
+import { IoLogIn, IoLogOut } from "react-icons/io5";
+import { ImUser } from "react-icons/im";
 import SvgRunning from "./svg/Running";
 
 export const NavBar = () => {
@@ -57,12 +58,12 @@ export const NavBar = () => {
 
       {user ? (
         <div className="user">
-          <img src={user.result.imageUrl} alt="user" />
-          {user.result.email}
-          <button onClick={logout}>LogOut</button>
+          {user.result.imageUrl ? <img src={user.result.imageUrl} alt="user" /> : <ImUser />}
+          <div className="mail">{user.result.email}</div>
+          <div className="connectButton" onClick={logout}><IoLogOut /></div>
         </div>
       ) : (
-        <Link to="/auth">Sign In</Link>
+        <Link className="connectButton" to="/auth"><IoLogIn /></Link>
       )}
     </div>
   );
