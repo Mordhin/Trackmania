@@ -2,6 +2,7 @@
 @import "./components/Sessions/Session/Session.scss";
 @import "./components/Sessions/Sessions.scss";
 @import "./components/Form/Form.scss";
+@import "./components/Auth.scss";
 
 @import url("https://fonts.googleapis.com/css2?family=ABeeZee&family=Permanent+Marker&display=swap");
 
@@ -42,4 +43,8 @@ body {
 
 .container {
   margin: 0 auto;
+}
+
+.flex {
+  display: flex;
 }

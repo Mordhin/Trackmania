@@ -3,12 +3,15 @@ import {GoogleLogin} from 'react-google-login';
 import { useDispatch } from 'react-redux';
 import history from '../history';
 import {signin, signup} from '../actions/authActions';
+import { FaGooglePlus, FaLightbulb } from 'react-icons/fa';
+import lightbulb from '../assets/lightbulb.png';
 
 const initialState = {firstName: '', lastName: '', email: '', password: '', confirmPassword: '',}
 
 export const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState(initialState)
+  const [factice, setFactice] = useState(false);
   /* const [showPassword, setShowPassword] = useState(false); */
   const dispatch = useDispatch();
 
@@ -26,6 +29,10 @@ export const Auth = () => {
   const handleChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value});
   };
+
+  const handleFactice = () => {
+    setFactice(true);
+  }
 
   const switchMode = () => {
     setIsSignUp((prevIsSignUp) => !prevIsSignUp);
@@ -49,17 +56,26 @@ export const Auth = () => {
   };
 
   return (
-    <div>
-      <h2>{isSignUp ? "Sign Up" : "Sign In"}</h2>
+    <div className="auth">
+      <div className={`factice ${factice ? "hidden" : ""}`}>
+        <div className="facticeHeader"><img src={lightbulb} alt=""></img><button className="discretButton" onClick={handleFactice}>x</button></div>
+        <p>Cette application étant une démo technique, je vous invite à vous connecter avec ce compte factice afin de bénéficier d'une expérience optimale (ie. database pré-remplie).</p>
+        <br/>
+        <ul>
+          <li>Email: xxxxxxxxx</li>
+          <li>Mot de Passe: 123456</li>
+        </ul>
+      </div>
+      <div className="authTitle">{isSignUp ? "Inscrivez-vous !" : "Connectez-vous !"}</div>
       <form onSubmit={handleSubmit}>
         {isSignUp && (
           <>
             <label>
-              First Name
+              Prénom
               <input name='firstName' onChange={handleChange} autoFocus required/>
             </label>
             <label>
-              Last Name
+              Nom
               <input name='lastName' onChange={handleChange} autoFocus required/>
             </label>
           </>
@@ -69,25 +85,27 @@ export const Auth = () => {
           <input name='email' onChange={handleChange} type='email' autoFocus required/>
         </label>
         <label>
-          Password
+          Mot de Passe
           <input name='password' onChange={handleChange} type='password' autoFocus required/>
         </label>
         {isSignUp && (
           <>
             <label>
-              Confirm Password
+              Comfirmez Mot de Passe
               <input name='confirmPassword' onChange={handleChange} type='password' autoFocus required/>
             </label>
           </>
         )}
-        <button type='submit'>{isSignUp ? "Sign Up" : "Sign In"}</button>
+        <button className="authButton" type='submit'>{isSignUp ? "S'inscrire" : "Se connecter"}</button>
+        <div className="or">Ou</div>
         <GoogleLogin 
           clientId= "777333567792-p8299np5s0ssqj7981to01v7nhurcc4d.apps.googleusercontent.com"
           render={(renderProps) => (
             <button
+              className="authButton google"
               onClick={renderProps.onClick}
               disabled={renderProps.disabled }
-            > Google Sign In
+            > Se connecter avec Google <FaGooglePlus />
             </button>
           )}
           onSuccess={googleSuccess}
@@ -95,7 +113,13 @@ export const Auth = () => {
           cookiePolicy="single_host_origin"
         />
       </form>
-      <button onClick={switchMode}>{isSignUp ? 'Already have an account ? Sign In' : "Don't have an account ? Sign Up"}</button>
+{/*       <button onClick={switchMode}>{isSignUp ? 'Vous avez déjà un compte ? Connectez-vous' : "Pas encore de compte ? Inscrivez-vous !"}</button>
+ */}      {isSignUp && (
+        <div className="flex isSignUp">Vous avez déjà un compte ? <button className="discretButton" onClick={switchMode}>Connectez-vous.</button></div>
+      )}
+      {!isSignUp && (
+        <div className="flex isSignUp">Pas encore de compte ? <button className="discretButton" onClick={switchMode}>Inscrivez-vous !</button></div>
+      )}
     </div>
   )
 }
