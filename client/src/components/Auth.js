@@ -3,7 +3,7 @@ import {GoogleLogin} from 'react-google-login';
 import { useDispatch } from 'react-redux';
 import history from '../history';
 import {signin, signup} from '../actions/authActions';
-import { FaGooglePlus, FaLightbulb } from 'react-icons/fa';
+import { FaGooglePlus } from 'react-icons/fa';
 import lightbulb from '../assets/lightbulb.png';
 
 const initialState = {firstName: '', lastName: '', email: '', password: '', confirmPassword: '',}
