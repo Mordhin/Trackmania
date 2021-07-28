@@ -3,10 +3,10 @@ import {GoogleLogin} from 'react-google-login';
 import { useDispatch } from 'react-redux';
 import history from '../history';
 import {signin, signup} from '../actions/authActions';
-import { FaGooglePlus, FaLightbulb } from 'react-icons/fa';
+import { FaGooglePlus } from 'react-icons/fa';
 import lightbulb from '../assets/lightbulb.png';
 
-const initialState = {firstName: '', lastName: '', email: '', password: '', confirmPassword: '',}
+const initialState = {firstName: '', lastName: '', email: 'arsene.lupin@gmail.com', password: '123456', confirmPassword: '',}
 
 export const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -62,7 +62,7 @@ export const Auth = () => {
         <p>Cette application étant une démo technique, je vous invite à vous connecter avec ce compte factice afin de bénéficier d'une expérience optimale (ie. database pré-remplie).</p>
         <br/>
         <ul>
-          <li>Email: xxxxxxxxx</li>
+          <li>Email: arsene.lupin@gmail.com</li>
           <li>Mot de Passe: 123456</li>
         </ul>
       </div>
@@ -82,16 +82,16 @@ export const Auth = () => {
         )}
         <label>
           Email
-          <input name='email' onChange={handleChange} type='email' autoFocus required/>
+          <input name='email' onChange={handleChange} type='email' defaultValue='arsene.lupin@gmail.com' autoFocus required/>
         </label>
         <label>
           Mot de Passe
-          <input name='password' onChange={handleChange} type='password' autoFocus required/>
+          <input name='password' onChange={handleChange} type='password' defaultValue='123456' autoFocus required/>
         </label>
         {isSignUp && (
           <>
             <label>
-              Comfirmez Mot de Passe
+              Confirmez Mot de Passe
               <input name='confirmPassword' onChange={handleChange} type='password' autoFocus required/>
             </label>
           </>

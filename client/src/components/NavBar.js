@@ -58,7 +58,7 @@ export const NavBar = () => {
 
       {user ? (
         <div className="user">
-          {user.result.imageUrl ? <img src={user.result.imageUrl} alt="user" /> : <ImUser />}
+          {user.result.imageUrl ? <img src={user.result.imageUrl} /> : <ImUser />}
           <div className="mail">{user.result.email}</div>
           <div className="connectButton" onClick={logout}><IoLogOut /></div>
         </div>
