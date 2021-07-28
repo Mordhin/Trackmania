@@ -65,8 +65,8 @@
   justify-content: space-between;
   align-items: center;
   svg {
-    font-size: 1.5rem;
-    margin-left: 0.5rem;
+    font-size: 1.5em;
+    margin-left: 0.5em;
   }
 }
 
@@ -139,6 +139,19 @@
 
 @media (max-width: 40rem) {
   .fieldArrays {
-    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+}
+
+@media (max-width: 40rem) {
+  .form {
+    width: 20rem;
+  }
+  .formTitle {
+    font-size: 1.5rem;
+  }
+  .bottomButtons {
+    font-size: 75%;
   }
 }
