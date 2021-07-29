@@ -5,6 +5,11 @@ export const email = value =>
     ? 'Email invalide'
     : undefined
 
+export const date = value =>
+  value && !/[0-9]{2}\/[0-9]{2}\/[0-9]{4}/.test(value)
+    ? 'Format invalide'
+    : undefined
+
 const maxLength = max => value =>
   value && value.length > max ? `${max} caractères maximum` : undefined
 export const maxLength10 = maxLength(10)
@@ -12,6 +17,10 @@ export const maxLength10 = maxLength(10)
 const minLength = min => value =>
   value && value.length < min ? `${min} caractères minimum` : undefined
 export const minLength2 = minLength(2)
+
+const exactLength = exact => value => 
+  value && value.length !== exact ? 'Format invalide' : undefined
+export const exactLength10 = exactLength(10)
 
 export const number = value =>
   value && isNaN(Number(value)) ? 'Nombre invalide' : undefined

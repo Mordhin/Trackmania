@@ -5,7 +5,8 @@ import { Field, FieldArray, reduxForm } from "redux-form";
 import { maxLength10, minLength2, minValue1, number, required } from "./Validation";
 import { createSession } from "../../actions/sessionActions";
 import { MdAddCircle, MdRemoveCircle } from "react-icons/md";
-import { IoSend } from "react-icons/io5"
+import { IoSend } from "react-icons/io5";
+import { FieldDatePicker } from "./FieldDatePicker";
 
 const renderField = ({ input, label, type, meta }) => {
   return (
@@ -49,6 +50,7 @@ const renderCardios = ({ fields, meta }) => (
           component={renderField}
           label="Activity"
           validate={[required, minLength2, maxLength10]}
+          id="activityField"
         />
         <Field
           name={`${cardio}.distance`}
@@ -96,6 +98,7 @@ const renderStrengths = ({ fields, meta }) => (
           component={renderField}
           label="Activity"
           validate={[required, minLength2, maxLength10]}
+          id="activityField"
         />
         <Field
           name={`${strength}.duration`}
@@ -155,48 +158,39 @@ const renderSeries = ({ fields, meta }) => (
 const ReduxForm = (props) => {
   const dispatch = useDispatch();
   const onSubmit = (formValues) => {
+    formValues.date = `${formValues.date.getFullYear()}-${('0' + (formValues.date.getMonth()+1)).slice(-2)}-${('0' + formValues.date.getDate()).slice(-2)}`;
     console.log(formValues);
     dispatch(createSession(formValues));
     history.push("/");
   };
 
   return (
-    <form onSubmit={props.handleSubmit(onSubmit)} className="form">
-      <div className="formTitle">Nouvelle séance</div>
-      <Field name="date" component={renderField} label="Date" type="text" validate={required}  />
-      <Field
-        name="duration"
-        component={renderField}
-        label="Duration"
-        type="number"
-        validate={[required, number, minValue1, maxLength10]}
-      />
-      <div className="fieldArrays">
-        <FieldArray name="cardios" component={renderCardios} />
-        <FieldArray name="strengths" component={renderStrengths} />
-      </div>
-      <div className="bottomButtons">
-        <button className="submitButton" type="submit" disabled={props.submitting}>Valider <IoSend /></button>
-        <button className="clearButton" type="button" disabled={props.pristine || props.submitting} onClick={props.reset}>
-            Effacer
-          </button>
-        <button onClick={() => history.push("/")}className="clearButton" type="button" disabled={props.submitting}>Annuler</button>
-      </div>
-    </form>
+    <>
+      <form onSubmit={props.handleSubmit(onSubmit)} className="form">
+        <div className="formTitle">Nouvelle séance</div>
+        <Field name="date" component={FieldDatePicker} label="Date" placeholder="JJ/MM/AAAA" validate={[required]}/>
+        <Field
+          name="duration"
+          component={renderField}
+          label="Duration"
+          type="number"
+          validate={[required, number, minValue1, maxLength10]}
+        />
+        <div className="fieldArrays">
+          <FieldArray name="cardios" component={renderCardios} />
+          <FieldArray name="strengths" component={renderStrengths} />
+        </div>
+        <div className="bottomButtons">
+          <button className="submitButton" type="submit" disabled={props.submitting}>Valider <IoSend /></button>
+          <button className="clearButton" type="button" disabled={props.pristine || props.submitting} onClick={props.reset}>
+              Effacer
+            </button>
+          <button onClick={() => history.push("/")}className="clearButton" type="button" disabled={props.submitting}>Annuler</button>
+        </div>
+      </form>
+    </>
   );
 };
-
-// to be put into a new validate.js file
-/* const validate = (formValues) => {
-  const errors = {};
-  if (!formValues.date) {
-    errors.date = "You must enter a date";
-  }
-  if (!formValues.duration) {
-    errors.duration = "You must enter a duration";
-  }
-  return errors;
-}; */
 
 export default reduxForm({
   form: "sessionForm"
