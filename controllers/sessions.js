@@ -11,7 +11,23 @@ export const getSessions = async (req, res) => {
 };
 
 export const createSessions = async (req, res) => {
-  const session = req.body;
+  const slicedDate = req.body.date.slice(0,10);
+  console.log(slicedDate);
+  let session = req.body;
+
+  const jour = slicedDate.slice(8,10);
+  const monthIndex = slicedDate.slice(5,7);
+  console.log(monthIndex);
+  const monthArray = [0, "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
+  const mois = monthArray[parseInt(monthIndex)];
+  console.log(mois);
+  const année = slicedDate.slice(0,4);
+
+  const formatedDate = `${jour} ${mois} ${année}`;
+  session.date = formatedDate;
+  console.log(session);
+
+  
   const newSession = new Session({
     ...session,
     creator: req.userId,

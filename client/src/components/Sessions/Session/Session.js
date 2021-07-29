@@ -66,9 +66,6 @@ export const Session = ({ data }) => {
 
   return (
     <div className="sessionCard">
-      {console.log(sessionType)}
-      {console.log(strengthCarousel)}
-      {console.log(bothCarousel)}
       <div className="sessionHeader">
         <div className="dateAndAdmin">
           <div className={`date ${sessionType}`}>{data.date}</div>
