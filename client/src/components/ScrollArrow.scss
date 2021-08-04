@@ -1,0 +1,14 @@
+
+.scrollArrow {
+  color: var(--secondary-300);
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 40px;
+  z-index: 2;
+  cursor: pointer;
+  transition: all ease-in 0.1s;
+  &:hover {
+    color: var(--primary-strength);
+  }
+}

@@ -7,12 +7,14 @@ import {NavBar} from "./components/NavBar";
 import { Auth } from "./components/Auth";
 import ReduxForm from "./components/Form/ReduxForm";
 import LandingPage from "./components/LandingPage";
+import ScrollArrow from "./components/ScrollArrow";
 
 const App = () => {
   return (
     <div>
       <Router history={history}>
         <NavBar />
+        <ScrollArrow />
         <Switch>
           <Route path='/' exact component={LandingPage} />
           <Route path='/board' exact component={Home} />
