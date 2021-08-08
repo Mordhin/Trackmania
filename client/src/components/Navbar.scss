@@ -22,6 +22,9 @@
   color: white;
   font-family: "Permanent Marker", cursive;
   text-decoration: none;
+  &:visited {
+    color: white;
+  }
 
   .dynamic_logo {
     transition: color 2s ease;
@@ -52,6 +55,9 @@
   .mail {
     text-decoration: none;
     margin-left: 1rem;
+    &:visited {
+      color: white;
+    }
   }
 
   > img:first-child, > svg:first-child {

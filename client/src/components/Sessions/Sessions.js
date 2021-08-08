@@ -9,6 +9,7 @@ import { MdAddCircle } from "react-icons/md";
 export const Sessions = () => {
   const sessions = useSelector((state) => state.sessions);
   const dispatch = useDispatch();
+  const currentUser = JSON.parse(localStorage.getItem("profile"));
 
   useEffect(
     () => {
@@ -21,7 +22,8 @@ export const Sessions = () => {
       <Link className="newButton" to="/new">Nouvelle séance <MdAddCircle /></Link>
       <div className="sessionsGrid">
       {sessions.map((session) => {
-        return <Session data={session}></Session>;
+        if ((currentUser?.result._id || currentUser?.result.googleId) === session.creator) return <Session data={session}></Session>;
+        return "";
       })}
       </div>
     </div>
