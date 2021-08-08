@@ -53,14 +53,15 @@
   align-items: center;
   display: flex;
   .mail {
-    text-decoration: none;
     margin-left: 1rem;
+  }
+  > a {
     &:visited {
       color: white;
     }
   }
-
-  > img:first-child, > svg:first-child {
+  a > img:first-child, a > svg:first-child {
+    text-decoration: none;
     width: 1.5rem;
     font-size: 1.5rem;
     border-radius: 50%;
