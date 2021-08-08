@@ -46,7 +46,7 @@ export const NavBar = () => {
 
   return (
     <div className="navbar">
-      <div className="title">
+      <a href="/" className="title">
         <div>Track</div>
         <div className={`dynamic_logo ${logo}`}>
           <div>mania</div>
@@ -54,12 +54,12 @@ export const NavBar = () => {
             <SvgRunning />
           </div>
         </div>
-      </div>
+      </a>
 
       {user ? (
         <div className="user">
           {user.result.imageUrl ? <img src={user.result.imageUrl} /> : <ImUser />}
-          <div className="mail">{user.result.email}</div>
+          <a href="/board" className="mail">{user.result.email}</a>
           <div className="connectButton" onClick={logout}><IoLogOut /></div>
         </div>
       ) : (

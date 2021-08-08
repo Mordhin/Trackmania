@@ -44,7 +44,7 @@ export const Auth = () => {
     const token = res?.tokenId;
     try {
       dispatch({type: 'AUTH', payload: {result, token}})
-      history.push("/");
+      history.push("/board");
     } catch (error) {
       console.log(error)
     }

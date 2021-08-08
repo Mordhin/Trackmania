@@ -21,6 +21,7 @@
   font-size: 2rem;
   color: white;
   font-family: "Permanent Marker", cursive;
+  text-decoration: none;
 
   .dynamic_logo {
     transition: color 2s ease;
@@ -49,6 +50,7 @@
   align-items: center;
   display: flex;
   .mail {
+    text-decoration: none;
     margin-left: 1rem;
   }
 
