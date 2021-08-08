@@ -161,7 +161,7 @@ const ReduxForm = (props) => {
     formValues.date = `${formValues.date.getFullYear()}-${('0' + (formValues.date.getMonth()+1)).slice(-2)}-${('0' + formValues.date.getDate()).slice(-2)}`;
     console.log(formValues);
     dispatch(createSession(formValues));
-    history.push("/");
+    history.push("/board");
   };
 
   return (
