@@ -13,7 +13,7 @@ const LandingPage = () => {
       <div className="block premier">
         <div>Trackmania</div>
         <div>Devenez la meilleure version de vous même.</div>
-        <a href="/">Partez !</a>
+        <a href="/auth">Partez !</a>
       </div>
       <div className="block deuxième">
         <div className="paragraphe">
@@ -29,7 +29,7 @@ const LandingPage = () => {
             <IoEarthSharp />
             <p><span>Trackmania</span> a fait ses preuves aux quatres coins du monde. A vous de faire les votres ! Rejoignez une communauté ambitieuse et soudée.</p>
           </div>
-          <a href="/">Je suis prêt !</a>
+          <a href="/auth">Je suis prêt !</a>
         </div>
       </div>
       <div className="block quatrième">
